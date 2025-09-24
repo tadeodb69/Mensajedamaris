@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@1,400&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+
+    <title>Un Mensaje Especial para Ti</title>
+
+    <style>
+        :root {
+            --color-fondo-gradiente-1: #e0c3fc;
+            --color-fondo-gradiente-2: #8ec5fc;
+            --color-sobre-cuerpo: #ffdde1;
+            --color-sobre-solapa: #eeb7c2;
+            --color-sobre-solapa-superior: #fbe2e7;
+            --color-carta: #fdfbfb;
+            --color-sello: #cf425c;
+            --color-sombra-fuerte: rgba(0, 0, 0, 0.25);
+            --color-sombra-suave: rgba(0, 0, 0, 0.1);
+            --color-texto: #3a3a3a;
+            --color-firma: #c91515;
+            --fuente-titulo: 'Great Vibes', cursive;
+            --fuente-fecha: 'Lora', serif;
+            --fuente-carta: 'Parisienne', cursive;
+            --duracion-apertura: 1.7s;
+        }
+        body {
+            margin: 0; padding: 20px; box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-fondo-gradiente-1) 0%, var(--color-fondo-gradiente-2) 100%);
+            font-family: var(--fuente-carta);
+        }
+        h1 {
+            font-family: var(--fuente-titulo); font-size: clamp(2.5rem, 10vw, 5rem);
+            color: #f63afd93; text-shadow: 3px 3px 10px var(--color-sombra-fuerte);
+            text-align: center; margin-bottom: 40px; line-height: 1.1;
+        }
+        .contenedor { perspective: 1500px; }
+        .envoltura-sobre {
+            position: relative; width: 320px; height: 220px;
+            cursor: pointer;
+            filter: drop-shadow(0px 20px 25px var(--color-sombra-fuerte));
+        }
+        .sobre {
+            position: absolute; width: 100%; height: 100%;
+            background-color: var(--color-sobre-cuerpo);
+            border-radius: 15px; box-shadow: inset 0 0 30px var(--color-sombra-suave);
+        }
+        .carta {
+            position: fixed; top: 50%; left: 50%;
+            width: 320px; height: 220px;
+            transform: translate(-50%, -40%) scale(1);
+            opacity: 0; z-index: 1; pointer-events: none;
+            background: var(--color-carta);
+            border-radius: 10px; padding: 25px; box-sizing: border-box;
+        }
+        .envoltura-sobre.abierto .carta {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            pointer-events: auto;
+        }
+        .contenido { color: var(--color-texto); font-family: var(--fuente-carta); width: 100%; height: 100%; overflow: auto; }
+        .contenido .fecha { display: block; text-align: right; font-size: 1.1rem; font-family: var(--fuente-fecha); font-style: italic; color: #888; margin-bottom: 20px; }
+        .contenido .saludo { font-size: 2rem; margin-bottom: 15px; }
+        .contenido .cuerpo { font-size: 1.2rem; line-height: 1.5; margin-bottom: 20px; }
+        .contenido .firma { font-size: 2rem; text-align: right; color: var(--color-firma); margin: 0; }
+    </style>
+</head>
+<body>
+    <main class="main-content">
+        <h1>Un Mensaje Especial para Ti</h1>
+        <div class="contenedor">
+            <div class="envoltura-sobre" id="sobre">
+                <div class="sobre"></div>
+                <div class="carta">
+                    <div class="contenido">
+                        <span class="fecha">Siempre presente</span>
+                        <p class="saludo">Querida Damaris,</p>
+                        <p class="cuerpo">La amistad es un tesoro que se guarda en el corazón. En cada risa compartida y en cada palabra sincera, me recuerdas lo afortunado que soy de tener tu compañía.</p>
+                        <p class="cuerpo">Gracias por estar, por escuchar y por ser esa persona especial que siempre ilumina los días con su amistad.</p>
+                        <p class="cuerpo">Recuerda que siempre podrás contar conmigo, en los momentos buenos y en los difíciles. 💖</p>
+                        <p class="firma">Con mucho cariño,<br>Tu amigo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const sobre = document.getElementById("sobre");
+        sobre.addEventListener("click", () => {
+            sobre.classList.toggle("abierto");
+        });
+    </script>
+</body>
+</html>
